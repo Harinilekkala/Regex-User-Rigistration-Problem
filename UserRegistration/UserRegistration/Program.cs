@@ -4,6 +4,7 @@ Console.WriteLine("1 - Enter First Name");
 Console.WriteLine("2 - Enter Last Name");
 Console.WriteLine("3 - Enter Mail Id");
 Console.WriteLine("4 - Mobile Number");
+Console.WriteLine("5 - Enter Password");
 
 int select = Convert.ToInt32(Console.ReadLine());
 switch (select)
@@ -32,5 +33,9 @@ switch (select)
         regex.CheckMobileNo(ContactNo);
         break;
 
-
+    case 5:
+        Console.WriteLine("Enter Password");
+        string inputPassword = Console.ReadLine();
+        regex.Password(inputPassword);
+        break;
 }
