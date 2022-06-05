@@ -48,6 +48,18 @@ namespace UserRegistration
                 Console.WriteLine(id + " Is a Invalid Mail Id");
                return;
         }
+
+        public void CheckMobileNo(string number)
+        {
+            const string numberRegex = "^(91 )[6-9]{1}[0-9]{9}$";
+            if (Regex.IsMatch(number, numberRegex))
+            {
+                Console.WriteLine(number + " is a valid Number");
+                return;
+            }
+            Console.WriteLine(number + " is a invalid Number");
+            return;
+        }
         }
     }
 
