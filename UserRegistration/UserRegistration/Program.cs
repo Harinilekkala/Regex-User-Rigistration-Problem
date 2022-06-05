@@ -6,6 +6,8 @@ Console.WriteLine("3 - Enter Mail Id");
 Console.WriteLine("4 - Mobile Number");
 Console.WriteLine("5 - Enter Password");
 Console.WriteLine("6 - Rule1 Passord");
+Console.WriteLine("7 - Rule2 Add Numeric Value in Passord");
+
 
 
 
@@ -46,6 +48,12 @@ switch (select)
         Console.WriteLine("Enter Password");
         string InputRule1 = Console.ReadLine();
         regex.Rule1UpperCase(InputRule1);
+        break;
+
+    case 7:
+        Console.WriteLine("Enter Password");
+        string InputRule2 = Console.ReadLine();
+        regex.Rule2AddNumeric(InputRule2);
         break;
 }
 

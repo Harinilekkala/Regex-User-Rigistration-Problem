@@ -82,6 +82,17 @@ namespace UserRegistration
             Console.WriteLine(password + " is a invalid Password");
             return;
         }
+        public void Rule2AddNumeric(string password)
+        {
+            const string passwordRegex = "^((?=.*[1-9]{1})(?=.*[A-Z])(?=.*[a-z])).{8,}$";
+            if (Regex.IsMatch(password, passwordRegex))
+            {
+                Console.WriteLine(password + " is a valid Password");
+                return;
+            }
+            Console.WriteLine(password + " is a invalid Password");
+            return;
+        }
     }
     }
 
