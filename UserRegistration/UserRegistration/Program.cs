@@ -7,6 +7,7 @@ Console.WriteLine("4 - Mobile Number");
 Console.WriteLine("5 - Enter Password");
 Console.WriteLine("6 - Rule1 Passord");
 Console.WriteLine("7 - Rule2 Add Numeric Value in Passord");
+Console.WriteLine("8 - Rule3 Add Special Character in Passord");
 
 
 
@@ -54,6 +55,12 @@ switch (select)
         Console.WriteLine("Enter Password");
         string InputRule2 = Console.ReadLine();
         regex.Rule2AddNumeric(InputRule2);
+        break;
+
+    case 8:
+        Console.WriteLine("Enter Password");
+        string InputRule3 = Console.ReadLine();
+        regex.Rule3SpecialChar(InputRule3);
         break;
 }
 
