@@ -71,6 +71,17 @@ namespace UserRegistration
             Console.WriteLine(password + " is a invalid Password");
             return;
         }
+        public void Rule1UpperCase(string password)
+        {
+            const string passwordRegex = "^((?=.*[A-Z])(?=.*[a-z])).{8,}$";
+            if (Regex.IsMatch(password, passwordRegex))
+            {
+                Console.WriteLine(password + " is a valid Password");
+                return;
+            }
+            Console.WriteLine(password + " is a invalid Password");
+            return;
+        }
     }
     }
 

@@ -5,6 +5,9 @@ Console.WriteLine("2 - Enter Last Name");
 Console.WriteLine("3 - Enter Mail Id");
 Console.WriteLine("4 - Mobile Number");
 Console.WriteLine("5 - Enter Password");
+Console.WriteLine("6 - Rule1 Passord");
+
+
 
 int select = Convert.ToInt32(Console.ReadLine());
 switch (select)
@@ -38,4 +41,11 @@ switch (select)
         string inputPassword = Console.ReadLine();
         regex.Password(inputPassword);
         break;
+
+    case 6:
+        Console.WriteLine("Enter Password");
+        string InputRule1 = Console.ReadLine();
+        regex.Rule1UpperCase(InputRule1);
+        break;
 }
+
