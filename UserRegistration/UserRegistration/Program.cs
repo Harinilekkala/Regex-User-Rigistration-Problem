@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 UserRegistration.RegularExpression regex = new UserRegistration.RegularExpression();
 Console.WriteLine("1 - Enter First Name");
-//Console.WriteLine("2 - Enter Last Name");
+Console.WriteLine("2 - Enter Last Name");
 int select = Convert.ToInt32(Console.ReadLine());
 switch (select)
 {
@@ -10,5 +10,10 @@ switch (select)
         string fName = Console.ReadLine();
         regex.name(fName);
         break;
-
+    
+    case 2:
+        Console.WriteLine("Enter Last Name Name");
+        string LName = Console.ReadLine();
+        regex.name(LName);
+        break;
 }

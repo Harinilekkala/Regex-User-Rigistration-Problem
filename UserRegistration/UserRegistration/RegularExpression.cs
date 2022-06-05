@@ -22,6 +22,18 @@ namespace UserRegistration
             Console.WriteLine(name + " is a invalid Name");
             return;
         }
+        public void LastName(string name)
+        {
+            const string NAME = "^[A-Z]{1}[a-z]{2,}$";
+
+            if (Regex.IsMatch(name, NAME))
+            {
+                Console.WriteLine(name + " is a valid Name");
+                return;
+            }
+            Console.WriteLine(name + " is a invalid Name");
+            return;
+        }
     }
 
 }
