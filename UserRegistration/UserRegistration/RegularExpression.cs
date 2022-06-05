@@ -34,7 +34,22 @@ namespace UserRegistration
             Console.WriteLine(name + " is a invalid Name");
             return;
         }
+        public void ValidateMailId(string id)
+        {
+            const string IdRegex = "^[a-zA-Z0-9]+[.]{1}[a-zA-Z0-9]+[@][a-zA-Z]+[.][a-zA-Z]{2,3}$";
+
+            if (Regex.IsMatch(id, IdRegex))
+                {
+                
+                Console.WriteLine(id + " Is a valid Mail Id");
+                return;
+                 
+                }
+                Console.WriteLine(id + " Is a Invalid Mail Id");
+               return;
+        }
+        }
     }
 
-}
+
 
