@@ -1,53 +1,92 @@
-
 using System.Text.RegularExpressions;
+using UserRegistration;
 
-
-namespace User_Input_Test
+namespace TestUserInput
 {
-
     public class Tests
     {
-        UserRegistration.RegularExpression regularExpression = new UserRegistration.RegularExpression();
-
+        Regex_User_Registration.RegularExpression  regularExpression = new Regex_User_Registration.RegularExpression();
         [Test]
         public void GivenFirstName_ReturnValidOrNot()
         {
-            string name = "Harini";
-            string Expected = regularExpression.Name(name);
-            Assert.AreEqual(name, Expected);
+            try
+            {
+                string name = "Nantha@";
+                string Expected = regularExpression.FirstName(name);
+                Assert.AreEqual(name, Expected);
+            }
+            catch (CustomException e)
+            {
+                Assert.AreEqual("Invalid FirstName", e.Message);
+            }
         }
         [Test]
         public void GivenLasttName_ReturnValidOrNot()
         {
-            string name = "Lekkala";
-            string Expected = regularExpression.Name(name);
-            Assert.AreEqual(name, Expected);
+            try
+            {
+                string name = "Shanmugam";
+                string Expected = regularExpression.LastName(name);
+                Assert.AreEqual(name, Expected);
+            }
+            catch (CustomException e)
+            {
+                Assert.AreEqual("Invalid LastName", e.Message);
+            }
+
         }
         [Test]
         public void GivenEmailId_ReturnTrue()
         {
-            string inputEmail = "h.harinilekkala1997.com";
-            Assert.IsFalse(regularExpression.email(inputEmail));
+            try
+            {
+                string Email = "s.nantha@gmail.com";
+                Assert.IsTrue(regularExpression.Equals(Email));
+                //string EmailId = (RegularExpression.email(Email));
+                //Assert.AreEqual("Valid", EmailId);
+            }
+            catch (CustomException e)
+            {
+                Assert.AreEqual("Invalid Email Id", e.Message);
+            }
         }
         [Test]
         public void GivenMobileNumber_ReturnTrue()
         {
-            string mobileNumber = "91 9842778899";
-            Assert.IsTrue(regularExpression.CheckMobileNo(mobileNumber));
+            try
+            {
+                string mobileNumber = "91 9842778899";
+                Assert.IsTrue(regularExpression.ContactNumber(mobileNumber));
+            }
+            catch (CustomException e)
+            {
+                Assert.AreEqual("Invalid Contact Number", e.Message);
+            }
         }
         [Test]
         public void GivenPassword_ReturnTrue()
         {
-            string password = "Hari@121";
-            Assert.IsFalse(regularExpression.Password(password));
+            try
+            {
+                string password = "AbcdA@123Ac12";
+                Assert.IsTrue(regularExpression.Password(password));
+            }
+            catch (CustomException e)
+            {
+                Assert.AreEqual("Invalid Contact Number", e.Message);
+            }
         }
         [Test]
-        public void CheckValidUserInputEmailToEmailRegex()
+        public void CheckUserInputEmailToEmailRegex()
         {
-            string[] inputId = System.IO.File.ReadAllLines(@"D:\.net\Regex-User-Rigistration-Problem\UserRegistration\UserRegistration\ValidMails.txt");
-            foreach (string input in inputId)
+            string[] InputId = System.IO.File.ReadAllLines(@"D:\.net\Regex-User-Rigistration-Problem\UserRegistration\UserRegistration\ValidMails.txt");
+            foreach (string input in InputId)
             {
-                Assert.IsTrue(regularExpression.email(input));
+                
+                string email = input.Equals(InputId);
+                Assert.IsTrue(regularExpression.email(InputId));
+                //Assert.AreEqual("Valid", email);
+                // string result = regularExpression.email(inputId);
             }
         }
         [Test]
@@ -56,9 +95,16 @@ namespace User_Input_Test
             string[] inputId = System.IO.File.ReadAllLines(@"D:\.net\Regex-User-Rigistration-Problem\UserRegistration\UserRegistration\Invalid.txt");
             foreach (string input in inputId)
             {
-                Assert.IsFalse(regularExpression.email(input));
+                try
+                {
+                    string result = regularExpression.email(inputId);
+                }
+                catch (CustomException e)
+                {
+                    Assert.AreEqual("Invalid Email Id", e.Message);
+                }
+
             }
         }
     }
 }
-
