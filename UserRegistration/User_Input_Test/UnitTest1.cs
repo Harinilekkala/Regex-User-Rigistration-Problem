@@ -38,7 +38,7 @@ namespace User_Input_Test
         [Test]
         public void GivenPassword_ReturnTrue()
         {
-            string password = "Hari@123";
+            string password = "Hari@121";
             Assert.IsFalse(regularExpression.Password(password));
         }
         [Test]
