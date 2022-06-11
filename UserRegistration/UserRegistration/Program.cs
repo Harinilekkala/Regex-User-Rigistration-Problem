@@ -18,19 +18,19 @@ switch (select)
     case 1:
         Console.WriteLine("Enter First Name");
         string fName = Console.ReadLine();
-        regex.name(fName);
+        regex.Name(fName);
         break;
     
     case 2:
         Console.WriteLine("Enter Last Name Name");
         string LName = Console.ReadLine();
-        regex.name(LName);
+        regex.Name(LName);
         break;
 
     case 3:
         Console.WriteLine("Enter Maild Id");
         string MailId= Console.ReadLine();
-        regex.ValidateMailId(MailId);
+        regex.email(MailId);
         break;
 
     case 4:

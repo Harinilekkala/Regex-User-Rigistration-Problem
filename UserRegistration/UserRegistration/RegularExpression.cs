@@ -7,20 +7,24 @@ using System.Threading.Tasks;
 
 namespace UserRegistration
 {
-    internal class RegularExpression
+    public class RegularExpression
     
     {
-        public void name(string name)
+            //public void name(string name)
+            public string Name(string name)
+
         {
             const string NAME = "^[A-Z]{1}[a-z]{2,}$";
 
             if (Regex.IsMatch(name, NAME))
             {
                 Console.WriteLine(name + " is a valid Name");
-                return;
+                
+                return name;
             }
             Console.WriteLine(name + " is a invalid Name");
-            return;
+            
+            return null;
         }
         public void LastName(string name)
         {
@@ -34,42 +38,46 @@ namespace UserRegistration
             Console.WriteLine(name + " is a invalid Name");
             return;
         }
-        public void ValidateMailId(string id)
+        public bool email(string id)
         {
-            const string IdRegex = "^[a-zA-Z0-9]+[.]{1}[a-zA-Z0-9]+[@][a-zA-Z]+[.][a-zA-Z]{2,3}$";
+            const string IdRegex = "^[a-zA-z0-9]+([.+-]?[a-zA-z0-9]+)@[a-z0-9]+[.]?(com|co|net)+((.in|.au|.us)*)$"; ;
+
+
 
             if (Regex.IsMatch(id, IdRegex))
                 {
                 
                 Console.WriteLine(id + " Is a valid Mail Id");
-                return;
+                return true;
                  
                 }
                 Console.WriteLine(id + " Is a Invalid Mail Id");
-               return;
+               return false;
         }
 
-        public void CheckMobileNo(string number)
+       // public void CheckMobileNo(string number)
+            public bool CheckMobileNo(string number)
         {
             const string numberRegex = "^(91 )[6-9]{1}[0-9]{9}$";
             if (Regex.IsMatch(number, numberRegex))
             {
                 Console.WriteLine(number + " is a valid Number");
-                return;
+                
+                return true;
             }
             Console.WriteLine(number + " is a invalid Number");
-            return;
+            return false;
         }
-        public void Password(string password)
+        public bool Password(string password)
         {
             const string passwordRegex = "^[A-z]{8,}$";
             if (Regex.IsMatch(password, passwordRegex))
             {
                 Console.WriteLine(password + " is a valid Password");
-                return;
+                return true;
             }
             Console.WriteLine(password + " is a invalid Password");
-            return;
+            return false;
         }
         public void Rule1UpperCase(string password)
         {
