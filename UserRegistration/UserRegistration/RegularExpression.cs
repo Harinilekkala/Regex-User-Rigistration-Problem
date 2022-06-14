@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-using UserRegistration;
+
 
 namespace Regex_User_Registration
 {
@@ -13,9 +13,10 @@ namespace Regex_User_Registration
         public string FirstName(string name)
         {
             const string NAME = "^[A-Z]{1}[a-z]{2,}$";
+            Func<string, bool> result = (name) => (Regex.IsMatch(name, NAME));
             try
             {
-                if (Regex.IsMatch(name, NAME))
+                if (result(name))
                 {
                     Console.WriteLine(name + " is a valid Name");
                     return name;
@@ -28,15 +29,16 @@ namespace Regex_User_Registration
             }
             catch
             {
-                throw new CustomException(CustomException.ExceptionType.INVALID_FIRSTNAME, "Invalid FirstName");
+                throw new CustomExceptions(CustomExceptions.ExceptionType.INVALID_FIRSTNAME, "Invalid FirstName");
             }
         }
         public string LastName(string name)
         {
             const string NAME = "^[A-Z]{1}[a-z]{2,}$";
+            Func<string, bool> result = (name) => (Regex.IsMatch(name, NAME));
             try
             {
-                if (Regex.IsMatch(name, NAME))
+                if (result(name))
                 {
                     Console.WriteLine(name + " is a valid Name");
                     return name;
@@ -49,13 +51,14 @@ namespace Regex_User_Registration
             }
             catch
             {
-                throw new CustomException(CustomException.ExceptionType.INVALID_FIRSTNAME, "Invalid LastName");
+                throw new CustomExceptions(CustomExceptions.ExceptionType.INVALID_FIRSTNAME, "Invalid LastName");
             }
         }
         public string email(string id)
         {
             const string mailId = "^[a-zA-z0-9]+([.+-]?[a-zA-z0-9]+)@[a-z0-9]+[.]?(com|co|net)+((.in|.au|.us)*)$";
-            if (Regex.IsMatch(id, mailId))
+            Func<string, bool> result = (id) => (Regex.IsMatch(id, mailId));
+            if (result(id))
             {
                 Console.WriteLine(id + " is a valid Email");
                 return "Valid";
@@ -63,7 +66,7 @@ namespace Regex_User_Registration
             else
             {
                 Console.WriteLine(id + " is a invalid Email");
-                throw new CustomException(CustomException.ExceptionType.INVALID_EMAIL, "Invalid Email Id");
+                throw new CustomExceptions(CustomExceptions.ExceptionType.INVALID_EMAIL, "Invalid Email Id");
 
             }
 
@@ -71,7 +74,8 @@ namespace Regex_User_Registration
         public bool ContactNumber(string number)
         {
             const string numberRegex = "^(91 )[6-9]{1}[0-9]{9}$";
-            if (Regex.IsMatch(number, numberRegex))
+            Func<string, bool> result = (number) => (Regex.IsMatch(number, numberRegex));
+            if (result(number))
             {
                 Console.WriteLine(number + " is a valid Number");
                 return true;
@@ -79,13 +83,14 @@ namespace Regex_User_Registration
             else
             {
                 Console.WriteLine(number + " is a invalid Number");
-                throw new CustomException(CustomException.ExceptionType.INVALID_MOBILE_NUMBER, "Invalid Contact Number");
+                throw new CustomExceptions(CustomExceptions.ExceptionType.INVALID_MOBILE_NUMBER, "Invalid Contact Number");
             }
         }
         public bool Password(string password)
         {
             const string passwordRegex = "^(?=[A-za-z0-9,]*[!#@$%^&][a-zA-Z0-9]*$)[]a-zA-Z0-9,!#@$%^&]+.{8,}";
-            if (Regex.IsMatch(password, passwordRegex))
+            Func<string, bool> result = (password) => (Regex.IsMatch(password, passwordRegex));
+            if (result(password))
             {
                 Console.WriteLine(password + " is a valid Password");
                 return true;
@@ -93,10 +98,9 @@ namespace Regex_User_Registration
             else
             {
                 Console.WriteLine(password + " is a invalid Password");
-                throw new CustomException(CustomException.ExceptionType.INVALID_PASSWORD, "Invalid Password");
+                throw new CustomExceptions(CustomExceptions.ExceptionType.INVALID_PASSWORD, "Invalid Password");
             }
         }
 
-        
     }
 }

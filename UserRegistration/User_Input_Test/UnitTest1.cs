@@ -1,21 +1,21 @@
 using System.Text.RegularExpressions;
-using UserRegistration;
+using Regex_User_Registration;
 
 namespace TestUserInput
 {
     public class Tests
     {
-        Regex_User_Registration.RegularExpression  regularExpression = new Regex_User_Registration.RegularExpression();
+        RegularExpression regularExpression = new RegularExpression();
         [Test]
         public void GivenFirstName_ReturnValidOrNot()
         {
             try
             {
-                string name = "Nantha@";
+                string name = "Harini@";
                 string Expected = regularExpression.FirstName(name);
                 Assert.AreEqual(name, Expected);
             }
-            catch (CustomException e)
+            catch (CustomExceptions e)
             {
                 Assert.AreEqual("Invalid FirstName", e.Message);
             }
@@ -29,7 +29,7 @@ namespace TestUserInput
                 string Expected = regularExpression.LastName(name);
                 Assert.AreEqual(name, Expected);
             }
-            catch (CustomException e)
+            catch (CustomExceptions e)
             {
                 Assert.AreEqual("Invalid LastName", e.Message);
             }
@@ -40,12 +40,11 @@ namespace TestUserInput
         {
             try
             {
-                string Email = "s.nantha@gmail.com";
-                Assert.IsTrue(regularExpression.Equals(Email));
-                //string EmailId = (RegularExpression.email(Email));
-                //Assert.AreEqual("Valid", EmailId);
+                string inputEmail = "s.harini@gmail.com";
+                string result = (regularExpression.email(inputEmail));
+                Assert.AreEqual("Valid", result);
             }
-            catch (CustomException e)
+            catch (CustomExceptions e)
             {
                 Assert.AreEqual("Invalid Email Id", e.Message);
             }
@@ -58,7 +57,7 @@ namespace TestUserInput
                 string mobileNumber = "91 9842778899";
                 Assert.IsTrue(regularExpression.ContactNumber(mobileNumber));
             }
-            catch (CustomException e)
+            catch (CustomExceptions e)
             {
                 Assert.AreEqual("Invalid Contact Number", e.Message);
             }
@@ -71,7 +70,7 @@ namespace TestUserInput
                 string password = "AbcdA@123Ac12";
                 Assert.IsTrue(regularExpression.Password(password));
             }
-            catch (CustomException e)
+            catch (CustomExceptions e)
             {
                 Assert.AreEqual("Invalid Contact Number", e.Message);
             }
@@ -79,14 +78,11 @@ namespace TestUserInput
         [Test]
         public void CheckUserInputEmailToEmailRegex()
         {
-            string[] InputId = System.IO.File.ReadAllLines(@"D:\.net\Regex-User-Rigistration-Problem\UserRegistration\UserRegistration\ValidMails.txt");
-            foreach (string input in InputId)
+            string[] inputId = System.IO.File.ReadAllLines(@"D:\.net\Regex-User-Rigistration-Problem\UserRegistration\UserRegistration\ValidMails.txt");
+            foreach (string input in inputId)
             {
-                
-                string email = input.Equals(InputId);
-                Assert.IsTrue(regularExpression.email(InputId));
-                //Assert.AreEqual("Valid", email);
-                // string result = regularExpression.email(inputId);
+                string result = regularExpression.email(input);
+                Assert.AreEqual("Valid", result);
             }
         }
         [Test]
@@ -97,9 +93,9 @@ namespace TestUserInput
             {
                 try
                 {
-                    string result = regularExpression.email(inputId);
+                    string result = regularExpression.email(input);
                 }
-                catch (CustomException e)
+                catch (CustomExceptions e)
                 {
                     Assert.AreEqual("Invalid Email Id", e.Message);
                 }
